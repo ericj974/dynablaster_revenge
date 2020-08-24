@@ -50,6 +50,7 @@ _Dynablaster Revenge_ is a remake of the game Dynablaster, released by Hudson So
 ## Dependencies
 - Qt5, [License](https://doc.qt.io/qt-5/opensourcelicense.html)
 - SDL2, [License](https://www.libsdl.org/license.php)
+- Docker
 
 ## Supported compilers
 - MSVC 2010
@@ -63,33 +64,33 @@ _Dynablaster Revenge_ is a remake of the game Dynablaster, released by Hudson So
 - clang 7
 
 ## Compiling
-Dynablaster Revenge uses Qt's qmake build system.
-Therefore compiling the game should be as easy as this:
-```
-qmake
-jom
+
+At the root of the project
+
+- Build docker: 
+
+``` 
+docker build - < Dockerfile -t dynablaster:latest
 ```
 
-### Building on OSX
+- Launch docker:
 
-First ensure Xcode (10.1 was used) and command line build tools are installed.
-
-Install dependencies (using Homebrew):
-```
-brew install qt5
-brew install sdl2
+``` 
+docker run -e XAUTHORITY="/.Xauthority" -e DISPLAY=$DOCKER_DISPLAY -v ~/.Xauthority:/.Xauthority 
+-v /tmp/.X11-unix:/tmp/.X11-unix -it -v ${PWD}:"/home/root/dynablaster" dynablaster /bin/bash
 ```
 
-Add Qt5 to `~/.bash_profile` so qmake can be found:
-```
-export PATH="$(brew --prefix qt5)/bin:$PATH"
-```
-
-Build client:
+- Build client:
 ```
 cd client
 qmake
 make -j8
+```
+
+- Launch client:
+
+```
+./dynablaster
 ```
 
 # Requirements
