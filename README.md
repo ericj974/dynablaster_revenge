@@ -76,7 +76,7 @@ docker build - < Dockerfile -t dynablaster:latest
 - Launch docker:
 
 ``` 
-docker run -e XAUTHORITY="/.Xauthority" -e DISPLAY=$DOCKER_DISPLAY -v ~/.Xauthority:/.Xauthority 
+docker run -e XAUTHORITY="/.Xauthority" -e DISPLAY=$DISPLAY -v ~/.Xauthority:/.Xauthority 
 -v /tmp/.X11-unix:/tmp/.X11-unix -it -v ${PWD}:"/home/root/dynablaster" dynablaster /bin/bash
 ```
 
