@@ -48,20 +48,7 @@ _Dynablaster Revenge_ is a remake of the game Dynablaster, released by Hudson So
 # How to build
 
 ## Dependencies
-- Qt5, [License](https://doc.qt.io/qt-5/opensourcelicense.html)
-- SDL2, [License](https://www.libsdl.org/license.php)
 - Docker
-
-## Supported compilers
-- MSVC 2010
-- MSVC 2013
-- MSVC 2015
-- MSVC 2017
-- gcc 5
-- gcc 6
-- gcc 7
-- gcc 8
-- clang 7
 
 ## Compiling
 
@@ -75,9 +62,9 @@ docker build - < Dockerfile -t dynablaster:latest
 
 - Launch docker:
 
-``` 
-docker run -e XAUTHORITY="/.Xauthority" -e DISPLAY=$DISPLAY -v ~/.Xauthority:/.Xauthority 
--v /tmp/.X11-unix:/tmp/.X11-unix -it -v ${PWD}:"/home/root/dynablaster" dynablaster /bin/bash
+```
+chmod +x ./docker_run.sh
+./docker_run.sh
 ```
 
 - Build client:
@@ -85,11 +72,17 @@ docker run -e XAUTHORITY="/.Xauthority" -e DISPLAY=$DISPLAY -v ~/.Xauthority:/.X
 cd client
 qmake
 make -j8
+chmod +x ./dynablaster
 ```
 
+## Running
+
+At the root of the project
+                   
 - Launch client:
 
 ```
+./docker_run.sh
 ./dynablaster
 ```
 
