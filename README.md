@@ -83,6 +83,7 @@ At the root of the project
 
 ```
 ./docker_run.sh
+cd ./client
 ./dynablaster
 ```
 
